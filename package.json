@@ -1,0 +1,33 @@
+{
+  "name": "railway-alert-system",
+  "version": "1.0.0",
+  "description": "This is a listener interface for HC-SR04 ultrasonic sensor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m3rlin94/railway-alert-system.git"
+  },
+  "keywords": [
+    "HC-SR04",
+    "Ultrasonic",
+    "sensor",
+    "with",
+    "firebase",
+    "firestore"
+  ],
+  "author": "Naveen C. Cooray",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/m3rlin94/railway-alert-system/issues"
+  },
+  "homepage": "https://github.com/m3rlin94/railway-alert-system#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "firebase": "^7.19.0",
+    "firebase-admin": "^9.1.1",
+    "johnny-five": "^2.0.0"
+  }
+}
