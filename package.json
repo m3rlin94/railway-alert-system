@@ -28,6 +28,7 @@
     "dotenv": "^8.2.0",
     "firebase": "^7.19.0",
     "firebase-admin": "^9.1.1",
-    "johnny-five": "^2.0.0"
+    "johnny-five": "^2.0.0",
+    "serialport": "^9.0.1"
   }
 }
