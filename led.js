@@ -1,27 +1,25 @@
-const { Board } = require('johnny-five');
-// const board = new Board({
-//   port: '/dev/cu.usbmodem1414101',
-// });
-const serialport = require('serialport');
+const { Board, Led } = require('johnny-five');
+const board = new Board({
+  port: '/dev/cu.usbmodem1414101',
+});
 
-serialport
-  .list()
-  .then((ports) => {
-    console.log(ports);
-  })
-  .catch((error) => {
-    console.log('er', error);
-  });
+let led;
+let toggleState = false;
 
-// board.on('ready', () => {
-//   const led = new Led(13);
+board.on('ready', () => {
+  console.log('Board ready');
+  led = new Led(13);
 
-//   // This will grant access to the led instance
-//   // from within the REPL that's created when
-//   // running this program.
-//   board.repl.inject({
-//     led,
-//   });
+  const toggleLED = () => {
+    toggleState = !toggleState;
 
-//   led.blink();
-// });
+    if (toggleState) {
+      led.on();
+    } else {
+      led.off();
+    }
+  };
+
+  setInterval(toggleLED, 1000);
+});
+console.log('\nWaiting for device to connect...');

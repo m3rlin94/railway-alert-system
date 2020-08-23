@@ -10,8 +10,8 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-const COM_PORT = 'Com8'; // Change to appropriate com port number;
-const ULTRASONIC_CONNECTED_PIN = 7; // Change to appropriate pin number which the ultrasonic is connected to;
+const COM_PORT = 'COM5'; // Change to appropriate com port number;
+const ULTRASONIC_CONNECTED_PIN = 2; // Change to appropriate pin number which the ultrasonic is connected to;
 
 try {
   const board = new Board({
@@ -26,22 +26,24 @@ try {
 
     proximity.on('change', () => {
       const { centimeters } = proximity;
-      const distance = centimeters * 100;
-      console.log('  m  : ', distance);
+      console.log('  cm  : ', centimeters);
 
       db.collection('Detection')
         .doc('Distance')
-        .set({
-          distance,
-        })
+        .set(
+          {
+            centimeters,
+          },
+          {
+            merge: true,
+          }
+        )
         .then(() => {
-          console.log(
-            `Database update successful with value ${centimeters * 100}`
-          );
+          console.log(`Database update successful with value ${centimeters}`);
         })
         .catch((error) => {
           console.log(
-            `Value ${centimeters * 100} update unsuccessful with error: `,
+            `Value ${centimeters} update unsuccessful with error: `,
             error
           );
         });
